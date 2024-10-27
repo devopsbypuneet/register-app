@@ -6,10 +6,10 @@ pipeline{
   }
   stages{
     stage("Cleanup Workspace"){
-      steps{
-        cleanWS()
-      }
-    }
+                steps {
+                cleanWs()
+                }
+        }
     stage("Checkout from SCM"){
       steps{
         git branch: 'main', credentialsId: 'github_with_password', url: 'https://github.com/devopsbypuneet/register-app' 
@@ -17,12 +17,12 @@ pipeline{
     }
     stage("Build Application"){
       steps{
-        sh 'mvn clean package'
+        sh "mvn clean package"
       }
     }
     stage("Test Application"){
       steps{
-        sh 'mvn test'
+        sh "mvn test"
       }
     }
   }
